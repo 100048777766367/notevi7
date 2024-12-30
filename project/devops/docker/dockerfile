@@ -1,0 +1,20 @@
+# Dockerfile cho ứng dụng Node.js
+FROM node:14
+
+# Thiết lập thư mục làm việc
+WORKDIR /usr/src/app
+
+# Sao chép package.json và package-lock.json
+COPY package*.json ./
+
+# Cài đặt dependencies
+RUN npm install
+
+# Sao chép tất cả mã nguồn vào container
+COPY . .
+
+# Expose port ứng dụng
+EXPOSE 5000
+
+# Lệnh chạy ứng dụng
+CMD ["node", "backend/server.js"]

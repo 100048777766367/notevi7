@@ -1,0 +1,26 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: notes-app
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: notes-app
+  template:
+    metadata:
+      labels:
+        app: notes-app
+    spec:
+      containers:
+      - name: notes-app
+        image: your_docker_image_name:latest
+        ports:
+        - containerPort: 5000
+        env:
+        - name: MONGODB_URI
+          value: your_mongodb_connection_string
+        - name: GOOGLE_CLIENT_ID
+          value: your_google_client_id
+        - name: GOOGLE_CLIENT_SECRET
+          value: your_google_client_secret

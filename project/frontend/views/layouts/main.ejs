@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Notes App</title>
+    <link rel="stylesheet" href="/styles/main.css">
+</head>
+<body>
+    <header>
+        <h1>My Notes Application</h1>
+        <% if (user) { %>
+            <p>Welcome, <%= user.name %>! <a href="/logout">Logout</a></p>
+        <% } else { %>
+            <a href="/login">Login</a>
+        <% } %>
+    </header>
+    <main>
+        <%- body %> <!-- Chèn body của từng trang -->
+    </main>
+    <footer>
+        <p>&copy; 2024 My Notes App</p>
+    </footer>
+</body>
+</html>

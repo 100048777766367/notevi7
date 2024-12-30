@@ -1,0 +1,12 @@
+<% include ../layouts/main %> <!-- Chèn layout chính -->
+<h2>Your Notes</h2>
+<form action="/dashboard/add" method="POST">
+    <input type="text" name="title" placeholder="Title" required>
+    <textarea name="body" placeholder="Your note here..." required></textarea>
+    <button type="submit">Add Note</button>
+</form>
+<ul>
+    <% notes.forEach(note => { %>
+        <li><strong><%= note.title %></strong>: <%= note.body %></li>
+    <% }) %>
+</ul>

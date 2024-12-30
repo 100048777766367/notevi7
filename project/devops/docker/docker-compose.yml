@@ -1,0 +1,46 @@
+# version: '3.8'
+# services:
+#   backend:
+#     build: ./backend
+#     ports:
+#       - "5000:5000"
+#     environment:
+#       - MONGO_URI=mongodb://mongo:27017/notes
+#     depends_on:
+#       - mongo
+
+#   mongo:
+#     image: mongo
+#     ports:
+#       - "27017:27017"
+#     volumes:
+#       - mongo-data:/data/db
+
+# volumes:
+#   mongo-data:
+# version: '3.8'
+
+# services:
+#   app:
+#     build: ./..
+#     volumes:
+#       - ..:/usr/src/app
+#     ports:
+#       - "5000:5000"
+#     environment:
+#       - MONGODB_URI=${MONGODB_URI}
+version: '3.8'
+
+services:
+  app:
+    build: ./..  # Xây dựng từ Dockerfile tại thư mục gốc
+    volumes:
+      - ..:/usr/src/app  # Gắn thư mục gốc vào container
+    ports:
+      - "5000:5000"  # Mapping port 5000 trên máy chủ tới container
+    environment:
+      - MONGODB_URI=${MONGODB_URI}  # Đưa biến môi trường vào container
+      - GOOGLE_CLIENT_ID=${GOOGLE_CLIENT_ID}
+      - GOOGLE_CLIENT_SECRET=${GOOGLE_CLIENT_SECRET}
+      - GOOGLE_CALLBACK_URL=${GOOGLE_CALLBACK_URL}
+      - PORT=5000
